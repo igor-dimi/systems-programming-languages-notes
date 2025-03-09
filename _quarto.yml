@@ -1,0 +1,21 @@
+project:
+  type: book
+
+book:
+  title: "Systems Programming Languages"
+  author: "Igor Dimitrov"
+  date: "5/17/2024"
+  chapters:
+    - index.qmd
+  page-navigation: true
+
+# bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
