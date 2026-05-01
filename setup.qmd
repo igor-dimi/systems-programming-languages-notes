@@ -987,7 +987,7 @@ That is why the setup starts with tiny chapter CMake files but still supports co
 
 Yes — the common way is not merely “compile files named `test_*.cpp`”. The common CMake way is:
 
-```text id="hfi2aa"
+```text 
 1. build each test file as an executable
 2. register that executable as a CTest test using add_test(...)
 3. run tests through CTest, VS Code Test Explorer, or CMake Tools test commands
@@ -999,34 +999,34 @@ CMake’s testing support is based on `enable_testing()` / `include(CTest)` plus
 
 In our setup so far:
 
-```text id="7u7bmd"
+```text 
 ex_*.cpp
 demo_*.cpp
 ```
 
 means:
 
-```text id="xx6xom"
+```text 
 build runnable programs
 but do not treat them as formal tests
 ```
 
 For tests, we could use:
 
-```text id="gs733o"
+```text 
 test_*.cpp
 ```
 
 to mean:
 
-```text id="zb8ttf"
+```text 
 build runnable test programs
 and register them with CTest
 ```
 
 So a chapter might later look like:
 
-```text id="37q7g9"
+```text 
 ch05/
   CMakeLists.txt
 
@@ -1050,13 +1050,13 @@ The examples are run manually when you want to explore. The tests are run as par
 
 At the top of your C++ CMake project:
 
-```text id="fvnk1w"
+```text 
 code/cpp/CMakeLists.txt
 ```
 
 I would add:
 
-```cmake id="jgbzv6"
+```cmake 
 include(CTest)
 ```
 
@@ -1064,7 +1064,7 @@ near the top, after `project(...)`.
 
 For example:
 
-```cmake id="3ar5kz"
+```cmake 
 cmake_minimum_required(VERSION 3.25)
 
 project(cpp_studies LANGUAGES CXX)
@@ -1088,7 +1088,7 @@ Keep your existing `add_cpp_study_examples(...)` for examples/demos.
 
 Then add a separate helper for tests:
 
-```cmake id="9vkkso"
+```cmake 
 function(add_cpp_study_tests target_prefix)
     set(options)
     set(one_value_args)
@@ -1155,7 +1155,7 @@ endfunction()
 
 The key new line is:
 
-```cmake id="m3tuwx"
+```cmake 
 add_test(
     NAME ${target_name}
     COMMAND ${target_name}
@@ -1168,7 +1168,7 @@ This registers the executable as a CTest test. CMake’s `add_test` command is t
 
 Suppose:
 
-```text id="kjub0a"
+```text 
 ch01/
   CMakeLists.txt
   ex_hello.cpp
@@ -1177,7 +1177,7 @@ ch01/
 
 Then:
 
-```cmake id="4s55ku"
+```cmake 
 add_cpp_study_examples(cpp_learning_stroustrup_ch01)
 add_cpp_study_tests(cpp_learning_stroustrup_ch01)
 ```
@@ -1186,7 +1186,7 @@ add_cpp_study_tests(cpp_learning_stroustrup_ch01)
 
 `test_arithmetic.cpp` becomes:
 
-```text id="6fojaa"
+```text 
 cpp_learning_stroustrup_ch01_test_arithmetic
 ```
 
@@ -1196,7 +1196,7 @@ and is also registered with CTest.
 
 Suppose:
 
-```text id="v0v454"
+```text 
 ch05/
   CMakeLists.txt
 
@@ -1214,7 +1214,7 @@ ch05/
 
 Then:
 
-```cmake id="qqch0a"
+```cmake 
 add_library(cpp_learning_stroustrup_ch05_lib
     src/vector.cpp
 )
@@ -1245,7 +1245,7 @@ add_cpp_study_tests(cpp_learning_stroustrup_ch05
 
 Now:
 
-```text id="kimgul"
+```text 
 ex_basic_vector.cpp       → runnable example
 demo_vector_growth.cpp    → runnable demo
 test_vector.cpp           → runnable CTest test
@@ -1256,7 +1256,7 @@ src/vector.cpp            → library implementation file, not auto-executable
 
 Without any external testing framework, a simple test can just return `0` for success and nonzero for failure.
 
-```cpp id="vma20r"
+```cpp 
 #include <cassert>
 
 int main()
@@ -1270,7 +1270,7 @@ CTest treats exit code `0` as pass and nonzero as fail. The CMake tutorial descr
 
 For your own vector:
 
-```cpp id="sgpjuu"
+```cpp 
 #include <cassert>
 #include <ch05/vector.hpp>
 
@@ -1293,7 +1293,7 @@ This is enough for early study code.
 
 From `code/cpp`:
 
-```bash id="spiu2x"
+```bash 
 cmake --preset debug
 cmake --build --preset debug
 ctest --test-dir ../../build/cpp-debug --output-on-failure
@@ -1301,7 +1301,7 @@ ctest --test-dir ../../build/cpp-debug --output-on-failure
 
 Or from the build directory:
 
-```bash id="1v24qt"
+```bash 
 cd ../../build/cpp-debug
 ctest --output-on-failure
 ```
@@ -1314,7 +1314,7 @@ Yes, `CMakePresets.json` can contain `testPresets`. CMake’s preset system supp
 
 You can extend your `CMakePresets.json` like this:
 
-```json id="1q9f6j"
+```json 
 {
   "version": 6,
   "cmakeMinimumRequired": {
@@ -1357,7 +1357,7 @@ You can extend your `CMakePresets.json` like this:
 
 Then from `code/cpp`:
 
-```bash id="i8pk86"
+```bash 
 cmake --preset debug
 cmake --build --preset debug
 ctest --preset debug
@@ -1367,7 +1367,7 @@ ctest --preset debug
 
 In VS Code, once CMake has configured the project, tests registered through CTest can be run through CMake Tools. The CMake Tools documentation includes commands such as:
 
-```text id="mk2j6e"
+```text 
 CMake: Select Test Preset
 CMake: Run Tests
 ```
@@ -1376,7 +1376,7 @@ and supports CMake presets. ([GitHub][7])
 
 So the workflow becomes:
 
-```text id="schu62"
+```text 
 write test_*.cpp
 → configure/build
 → CMake/CTest discovers tests
@@ -1387,7 +1387,7 @@ write test_*.cpp
 
 For your study project, yes, I think this convention is reasonable:
 
-```text id="ygi2sj"
+```text 
 ex_*.cpp      manually runnable examples
 demo_*.cpp    manually runnable demos
 test_*.cpp    CTest-registered tests
@@ -1397,7 +1397,7 @@ This is consistent with the style we already designed.
 
 The important distinction is that `test_*.cpp` should not merely be built. It should also be registered with:
 
-```cmake id="2uauzg"
+```cmake 
 add_test(...)
 ```
 
@@ -1407,7 +1407,7 @@ That is what makes it a real CMake/CTest test.
 
 I would keep two separate helper functions:
 
-```cmake id="4j3hap"
+```cmake 
 add_cpp_study_examples(...)
 add_cpp_study_tests(...)
 ```
@@ -1416,14 +1416,14 @@ rather than one giant function.
 
 That keeps the meaning clean:
 
-```text id="kglf44"
+```text 
 examples/demos → exploratory runnable programs
 tests          → correctness checks registered with CTest
 ```
 
 And in a chapter:
 
-```cmake id="f9l3uj"
+```cmake 
 add_cpp_study_examples(cpp_learning_stroustrup_ch05
     LINK_LIBRARIES cpp_learning_stroustrup_ch05_lib
 )
