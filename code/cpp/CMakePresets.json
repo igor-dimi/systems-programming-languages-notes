@@ -13,7 +13,8 @@
       "binaryDir": "${sourceDir}/../../build/cpp-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "BUILD_TESTING": "ON"
       }
     }
   ],
@@ -22,6 +23,16 @@
       "name": "debug",
       "displayName": "Debug",
       "configurePreset": "debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug tests",
+      "configurePreset": "debug",
+      "output": {
+        "outputOnFailure": true
+      }
     }
   ]
 }

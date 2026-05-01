@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.25)
 
 project(cpp_studies LANGUAGES CXX)
 
+include(CTest)
+
 # Global C++ settings
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -79,5 +81,80 @@ function(add_cpp_study_examples target_prefix)
         endif()
     endforeach()
 endfunction()
+
+# Create and register CTest tests from all test_*.cpp files
+# in the current directory.
+#
+# Each file becomes a target named:
+#
+#   <target_prefix>_<filename_without_extension>
+#
+# Optional arguments:
+#   LINK_LIBRARIES, INCLUDE_DIRS, SOURCES
+#
+# Requires include(CTest) at the project root.
+function(add_cpp_study_tests target_prefix)
+    set(options)
+    set(one_value_args)
+    set(multi_value_args LINK_LIBRARIES INCLUDE_DIRS SOURCES)
+
+    cmake_parse_arguments(ARG
+        "${options}"
+        "${one_value_args}"
+        "${multi_value_args}"
+        ${ARGN}
+    )
+
+    file(GLOB test_sources CONFIGURE_DEPENDS
+        "${CMAKE_CURRENT_SOURCE_DIR}/test_*.cpp"
+    )
+
+    foreach(source_file IN LISTS test_sources)
+        get_filename_component(source_name "${source_file}" NAME_WE)
+
+        set(target_name "${target_prefix}_${source_name}")
+
+        add_executable(${target_name}
+            "${source_file}"
+            ${ARG_SOURCES}
+        )
+
+        target_compile_features(${target_name} PRIVATE cxx_std_20)
+
+        if(ARG_INCLUDE_DIRS)
+            target_include_directories(${target_name}
+                PRIVATE
+                    ${ARG_INCLUDE_DIRS}
+            )
+        endif()
+
+        if(ARG_LINK_LIBRARIES)
+            target_link_libraries(${target_name}
+                PRIVATE
+                    ${ARG_LINK_LIBRARIES}
+            )
+        endif()
+
+        if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+            target_compile_options(${target_name}
+                PRIVATE
+                    -Wall
+                    -Wextra
+                    -Wpedantic
+            )
+        elseif(MSVC)
+            target_compile_options(${target_name}
+                PRIVATE
+                    /W4
+            )
+        endif()
+
+        add_test(
+            NAME ${target_name}
+            COMMAND ${target_name}
+        )
+    endforeach()
+endfunction()
+
 # Books / book groups
 add_subdirectory(learning-cpp/stroustrup)

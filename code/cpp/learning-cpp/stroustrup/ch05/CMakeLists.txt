@@ -10,3 +10,7 @@ target_include_directories(cpp_learning_stroustrup_ch05_lib
 add_cpp_study_examples(cpp_learning_stroustrup_ch05
     LINK_LIBRARIES cpp_learning_stroustrup_ch05_lib
 )
+
+add_cpp_study_tests(cpp_learning_stroustrup_ch05
+    LINK_LIBRARIES cpp_learning_stroustrup_ch05_lib
+)

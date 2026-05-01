@@ -1,1 +1,2 @@
 add_cpp_study_examples(cpp_learning_stroustrup_ch01)
+add_cpp_study_tests(cpp_learning_stroustrup_ch01)
