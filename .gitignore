@@ -4,3 +4,5 @@
 .vscode/*
 !.vscode/settings.json
 /build/
+/.lsp/
+/.clj-kondo/
