@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Project Setup – Systems Programming Languages</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./resources.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-bf132de45b538d253cd2e2da5fec6016.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Project Setup</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Systems Programming Languages</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Systems-Programming-Languages.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Project Setup</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">C++</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Resources &amp; Reading List</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#c-study-build-system-summary" id="toc-c-study-build-system-summary" class="nav-link active" data-scroll-target="#c-study-build-system-summary"><span class="header-section-number">1.1</span> C++ study build system summary</a>
+  <ul class="collapse">
+  <li><a href="#overall-repository-structure" id="toc-overall-repository-structure" class="nav-link" data-scroll-target="#overall-repository-structure">1. Overall repository structure</a></li>
+  <li><a href="#vs-code-configuration" id="toc-vs-code-configuration" class="nav-link" data-scroll-target="#vs-code-configuration">2. VS Code configuration</a></li>
+  <li><a href="#build-directory-layout" id="toc-build-directory-layout" class="nav-link" data-scroll-target="#build-directory-layout">3. Build directory layout</a></li>
+  <li><a href="#cmake-and-ninja" id="toc-cmake-and-ninja" class="nav-link" data-scroll-target="#cmake-and-ninja">4. CMake and Ninja</a></li>
+  <li><a href="#root-cmake-project" id="toc-root-cmake-project" class="nav-link" data-scroll-target="#root-cmake-project">5. Root CMake project</a></li>
+  <li><a href="#automatic-example-discovery" id="toc-automatic-example-discovery" class="nav-link" data-scroll-target="#automatic-example-discovery">6. Automatic example discovery</a></li>
+  <li><a href="#book-level-cmake-files" id="toc-book-level-cmake-files" class="nav-link" data-scroll-target="#book-level-cmake-files">7. Book-level CMake files</a></li>
+  <li><a href="#chapter-level-cmake-files" id="toc-chapter-level-cmake-files" class="nav-link" data-scroll-target="#chapter-level-cmake-files">8. Chapter-level CMake files</a></li>
+  <li><a href="#cmake-presets" id="toc-cmake-presets" class="nav-link" data-scroll-target="#cmake-presets">9. CMake presets</a></li>
+  <li><a href="#running-programs-in-vs-code" id="toc-running-programs-in-vs-code" class="nav-link" data-scroll-target="#running-programs-in-vs-code">10. Running programs in VS Code</a></li>
+  <li><a href="#simple-chapters-versus-complex-chapters" id="toc-simple-chapters-versus-complex-chapters" class="nav-link" data-scroll-target="#simple-chapters-versus-complex-chapters">11. Simple chapters versus complex chapters</a></li>
+  <li><a href="#improved-future-proof-helper-function" id="toc-improved-future-proof-helper-function" class="nav-link" data-scroll-target="#improved-future-proof-helper-function">12. Improved future-proof helper function</a></li>
+  <li><a href="#header-only-libraries" id="toc-header-only-libraries" class="nav-link" data-scroll-target="#header-only-libraries">13. Header-only libraries</a></li>
+  <li><a href="#root-level-book-level-and-chapter-level-libraries" id="toc-root-level-book-level-and-chapter-level-libraries" class="nav-link" data-scroll-target="#root-level-book-level-and-chapter-level-libraries">14. Root-level, book-level, and chapter-level libraries</a></li>
+  <li><a href="#meaning-of-public-private-and-interface" id="toc-meaning-of-public-private-and-interface" class="nav-link" data-scroll-target="#meaning-of-public-private-and-interface">15. Meaning of <code>PUBLIC</code>, <code>PRIVATE</code>, and <code>INTERFACE</code></a></li>
+  <li><a href="#multiple-libraries-at-the-same-level" id="toc-multiple-libraries-at-the-same-level" class="nav-link" data-scroll-target="#multiple-libraries-at-the-same-level">16. Multiple libraries at the same level</a></li>
+  <li><a href="#practical-naming-convention" id="toc-practical-naming-convention" class="nav-link" data-scroll-target="#practical-naming-convention">17. Practical naming convention</a></li>
+  <li><a href="#recommended-development-workflow" id="toc-recommended-development-workflow" class="nav-link" data-scroll-target="#recommended-development-workflow">18. Recommended development workflow</a></li>
+  <li><a href="#what-this-setup-gives-you" id="toc-what-this-setup-gives-you" class="nav-link" data-scroll-target="#what-this-setup-gives-you">19. What this setup gives you</a></li>
+  </ul></li>
+  <li><a href="#extending-with-tests" id="toc-extending-with-tests" class="nav-link" data-scroll-target="#extending-with-tests"><span class="header-section-number">1.2</span> Extending with Tests</a>
+  <ul class="collapse">
+  <li><a href="#examples-versus-tests" id="toc-examples-versus-tests" class="nav-link" data-scroll-target="#examples-versus-tests">Examples versus tests</a></li>
+  <li><a href="#root-level-setup" id="toc-root-level-setup" class="nav-link" data-scroll-target="#root-level-setup">Root-level setup</a></li>
+  <li><a href="#add-a-test-helper-function" id="toc-add-a-test-helper-function" class="nav-link" data-scroll-target="#add-a-test-helper-function">Add a test helper function</a></li>
+  <li><a href="#simple-chapter-with-tests" id="toc-simple-chapter-with-tests" class="nav-link" data-scroll-target="#simple-chapter-with-tests">Simple chapter with tests</a></li>
+  <li><a href="#complex-chapter-with-a-chapter-library" id="toc-complex-chapter-with-a-chapter-library" class="nav-link" data-scroll-target="#complex-chapter-with-a-chapter-library">Complex chapter with a chapter library</a></li>
+  <li><a href="#what-does-a-minimal-test-file-look-like" id="toc-what-does-a-minimal-test-file-look-like" class="nav-link" data-scroll-target="#what-does-a-minimal-test-file-look-like">What does a minimal test file look like?</a></li>
+  <li><a href="#running-tests-manually" id="toc-running-tests-manually" class="nav-link" data-scroll-target="#running-tests-manually">Running tests manually</a></li>
+  <li><a href="#test-presets" id="toc-test-presets" class="nav-link" data-scroll-target="#test-presets">Test presets</a></li>
+  <li><a href="#vs-code-integration" id="toc-vs-code-integration" class="nav-link" data-scroll-target="#vs-code-integration">VS Code integration</a></li>
+  <li><a href="#should-test_.cpp-be-auto-globbed" id="toc-should-test_.cpp-be-auto-globbed" class="nav-link" data-scroll-target="#should-test_.cpp-be-auto-globbed">Should <code>test_*.cpp</code> be auto-globbed?</a></li>
+  <li><a href="#recommended-setup" id="toc-recommended-setup" class="nav-link" data-scroll-target="#recommended-setup">Recommended setup</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Project Setup</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Below is a comprehensive summary of the C++ study build setup we designed.</p>
+<section id="c-study-build-system-summary" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="c-study-build-system-summary"><span class="header-section-number">1.1</span> C++ study build system summary</h2>
+<section id="overall-repository-structure" class="level3">
+<h3 class="anchored" data-anchor-id="overall-repository-structure">1. Overall repository structure</h3>
+<p>Your C++ study code lives inside a larger Quarto book/repository:</p>
+<pre class="text"><code>systems-programming-languages/
+  _book/
+  .quarto/
+  index.qmd
+  _quarto.yml
+  resources.qmd
+  cpp/
+    ... notes ...
+  code/
+    c/
+    cpp/
+      ...
+    rust/
+    zig/
+    nim/
+    D/</code></pre>
+<p>The important point is:</p>
+<pre class="text"><code>systems-programming-languages/</code></pre>
+<p>is the repository and Quarto project root, but:</p>
+<pre class="text"><code>systems-programming-languages/code/cpp/</code></pre>
+<p>is the CMake project root for C++ code.</p>
+<p>This means you can open the whole repository in VS Code while still telling CMake Tools to treat <code>code/cpp</code> as the actual CMake project.</p>
+</section>
+<section id="vs-code-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="vs-code-configuration">2. VS Code configuration</h3>
+<p>Create:</p>
+<pre class="text"><code>systems-programming-languages/.vscode/settings.json</code></pre>
+<p>with:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"cmake.sourceDirectory"</span><span class="fu">:</span> <span class="st">"${workspaceFolder}/code/cpp"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This tells VS Code’s CMake Tools extension:</p>
+<blockquote class="blockquote">
+<p>The CMake project does not start at the repository root. It starts at <code>code/cpp</code>.</p>
+</blockquote>
+<p>So you can open:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> ~/Documents/notebooks/cs/systems-programming-languages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>but CMake will configure from:</p>
+<pre class="text"><code>code/cpp/</code></pre>
+<p>Recommended <code>.gitignore</code> behavior:</p>
+<pre class="gitignore"><code>/build/
+/.quarto/
+/_book/
+
+.vscode/*
+!.vscode/settings.json</code></pre>
+<p>This ignores generated files while keeping the useful project-local VS Code setting.</p>
+</section>
+<section id="build-directory-layout" class="level3">
+<h3 class="anchored" data-anchor-id="build-directory-layout">3. Build directory layout</h3>
+<p>Generated build files should not live inside the source folders. We chose a central build directory:</p>
+<pre class="text"><code>systems-programming-languages/
+  build/
+    cpp-debug/
+  code/
+    cpp/
+      CMakeLists.txt
+      CMakePresets.json</code></pre>
+<p>The CMake preset uses:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="er">"binaryDir":</span> <span class="er">"$</span><span class="fu">{</span><span class="er">sourceDir</span><span class="fu">}</span><span class="er">/../../build/cpp-debug"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Since <code>sourceDir</code> is:</p>
+<pre class="text"><code>systems-programming-languages/code/cpp</code></pre>
+<p>this resolves to:</p>
+<pre class="text"><code>systems-programming-languages/build/cpp-debug</code></pre>
+<p>Executables are placed in:</p>
+<pre class="text"><code>systems-programming-languages/build/cpp-debug/bin/</code></pre>
+<p>because the root <code>CMakeLists.txt</code> contains:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(<span class="dv">CMAKE_RUNTIME_OUTPUT_DIRECTORY</span> <span class="dv">${CMAKE_BINARY_DIR}</span>/bin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So a target like:</p>
+<pre class="text"><code>cpp_learning_stroustrup_ch01_ex_hello</code></pre>
+<p>will build to:</p>
+<pre class="text"><code>build/cpp-debug/bin/cpp_learning_stroustrup_ch01_ex_hello</code></pre>
+<p>In normal VS Code usage, you do not need to <code>cd</code> into this build folder manually. CMake Tools can select, build, run, and debug targets directly.</p>
+</section>
+<section id="cmake-and-ninja" class="level3">
+<h3 class="anchored" data-anchor-id="cmake-and-ninja">4. CMake and Ninja</h3>
+<p>CMake is the high-level build configuration system. It reads <code>CMakeLists.txt</code>.</p>
+<p>Ninja is the low-level build tool that actually performs the compilation. CMake generates Ninja build files.</p>
+<p>The relationship is:</p>
+<pre class="text"><code>CMakeLists.txt
+    ↓ read by cmake
+build.ninja
+    ↓ executed by ninja
+compiled executables/libraries</code></pre>
+<p>The preset uses Ninja:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="er">"generator":</span> <span class="er">"Ninja"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should be able to check your tools with:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--version</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ninja</span> <span class="at">--version</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">g++</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You normally do not write Ninja files yourself. You write CMake files, and CMake generates the Ninja build files.</p>
+</section>
+<section id="root-cmake-project" class="level3">
+<h3 class="anchored" data-anchor-id="root-cmake-project">5. Root CMake project</h3>
+<p>The root CMake file is here:</p>
+<pre class="text"><code>systems-programming-languages/code/cpp/CMakeLists.txt</code></pre>
+<p>This is the root of the C++ build system.</p>
+<p>It does several things:</p>
+<ol type="1">
+<li>declares the C++ project;</li>
+<li>sets the C++ standard;</li>
+<li>sets the runtime output directory;</li>
+<li>defines reusable helper functions;</li>
+<li>adds book directories with <code>add_subdirectory</code>.</li>
+</ol>
+<p>Example:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">cmake_minimum_required</span>(<span class="ot">VERSION</span> <span class="dt">3.25</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">project</span>(cpp_studies <span class="ot">LANGUAGES</span> <span class="ot">CXX</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(<span class="dv">CMAKE_CXX_STANDARD</span> 20)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(<span class="dv">CMAKE_CXX_STANDARD_REQUIRED</span> <span class="ot">ON</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(<span class="dv">CMAKE_CXX_EXTENSIONS</span> <span class="ot">OFF</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(<span class="dv">CMAKE_RUNTIME_OUTPUT_DIRECTORY</span> <span class="dv">${CMAKE_BINARY_DIR}</span>/bin)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span>(add_cpp_study_examples target_prefix)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">file</span>(<span class="ot">GLOB</span> example_sources <span class="ot">CONFIGURE_DEPENDS</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span><span class="st">/ex_*.cpp"</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span><span class="st">/demo_*.cpp"</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">foreach</span>(source_file <span class="ot">IN</span> <span class="ot">LISTS</span> example_sources)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">get_filename_component</span>(source_name <span class="st">"</span><span class="dv">${source_file}</span><span class="st">"</span> <span class="ot">NAME_WE</span>)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">set</span>(target_name <span class="st">"</span><span class="dv">${target_prefix}</span><span class="st">_</span><span class="dv">${source_name}</span><span class="st">"</span>)</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">add_executable</span>(<span class="dv">${target_name}</span> <span class="st">"</span><span class="dv">${source_file}</span><span class="st">"</span>)</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">target_compile_features</span>(<span class="dv">${target_name}</span> <span class="bn">PRIVATE</span> <span class="ot">cxx_std_20</span>)</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="dv">CMAKE_CXX_COMPILER_ID</span> <span class="ot">MATCHES</span> <span class="st">"GNU|Clang"</span>)</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_compile_options</span>(<span class="dv">${target_name}</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>                    -Wall</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>                    -Wextra</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>                    -Wpedantic</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elseif</span>(<span class="dv">MSVC</span>)</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_compile_options</span>(<span class="dv">${target_name}</span></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>                    /W4</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">endif</span>()</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">endforeach</span>()</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a><span class="kw">endfunction</span>()</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a><span class="kw">add_subdirectory</span>(learning-cpp/stroustrup)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The helper function is defined at the root level so every book and chapter can use it.</p>
+</section>
+<section id="automatic-example-discovery" class="level3">
+<h3 class="anchored" data-anchor-id="automatic-example-discovery">6. Automatic example discovery</h3>
+<p>We chose the convention:</p>
+<pre class="text"><code>ex_*.cpp
+demo_*.cpp</code></pre>
+<p>are automatically treated as executable programs.</p>
+<p>For example:</p>
+<pre class="text"><code>ch01/
+  ex_hello.cpp
+  ex_variables.cpp
+  demo_scope.cpp</code></pre>
+<p>automatically creates targets like:</p>
+<pre class="text"><code>cpp_learning_stroustrup_ch01_ex_hello
+cpp_learning_stroustrup_ch01_ex_variables
+cpp_learning_stroustrup_ch01_demo_scope</code></pre>
+<p>But files like:</p>
+<pre class="text"><code>vector.cpp
+list.cpp
+utils.cpp
+helper.cpp</code></pre>
+<p>are not automatically made into executables.</p>
+<p>This is important because later, in more complex chapters, you may have implementation files that are meant to support examples rather than become runnable programs themselves.</p>
+<p>So this convention is future-proof:</p>
+<pre class="text"><code>ex_*.cpp      → standalone exercise/example program
+demo_*.cpp    → demonstration program
+anything else → support/library/source file, not auto-built as an executable</code></pre>
+</section>
+<section id="book-level-cmake-files" class="level3">
+<h3 class="anchored" data-anchor-id="book-level-cmake-files">7. Book-level CMake files</h3>
+<p>A book directory might be:</p>
+<pre class="text"><code>code/cpp/learning-cpp/stroustrup/
+  CMakeLists.txt
+  ch01/
+  ch02/
+  ch03/</code></pre>
+<p>The book-level <code>CMakeLists.txt</code> adds chapter directories:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_subdirectory</span>(ch01)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Later:</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add_subdirectory(ch02)</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add_subdirectory(ch03)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This means you only activate chapters when you have created their chapter-level <code>CMakeLists.txt</code>.</p>
+</section>
+<section id="chapter-level-cmake-files" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-level-cmake-files">8. Chapter-level CMake files</h3>
+<p>A simple chapter looks like:</p>
+<pre class="text"><code>code/cpp/learning-cpp/stroustrup/ch01/
+  CMakeLists.txt
+  ex_hello.cpp</code></pre>
+<p>The chapter <code>CMakeLists.txt</code> is tiny:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This calls the root-level helper function and creates one executable target for every <code>ex_*.cpp</code> and <code>demo_*.cpp</code> file in that chapter.</p>
+<p>Example source file:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#</span><span class="er">#include &lt;iostream&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello from Stroustrup ch01!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="cmake-presets" class="level3">
+<h3 class="anchored" data-anchor-id="cmake-presets">9. CMake presets</h3>
+<p>The preset file is here:</p>
+<pre class="text"><code>systems-programming-languages/code/cpp/CMakePresets.json</code></pre>
+<p>Example:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"version"</span><span class="fu">:</span> <span class="dv">6</span><span class="fu">,</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"cmakeMinimumRequired"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"major"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"minor"</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">,</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"patch"</span><span class="fu">:</span> <span class="dv">0</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"configurePresets"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"debug"</span><span class="fu">,</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"displayName"</span><span class="fu">:</span> <span class="st">"Debug"</span><span class="fu">,</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"generator"</span><span class="fu">:</span> <span class="st">"Ninja"</span><span class="fu">,</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"binaryDir"</span><span class="fu">:</span> <span class="st">"${sourceDir}/../../build/cpp-debug"</span><span class="fu">,</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"cacheVariables"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"CMAKE_BUILD_TYPE"</span><span class="fu">:</span> <span class="st">"Debug"</span><span class="fu">,</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"CMAKE_EXPORT_COMPILE_COMMANDS"</span><span class="fu">:</span> <span class="st">"ON"</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"buildPresets"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"debug"</span><span class="fu">,</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"displayName"</span><span class="fu">:</span> <span class="st">"Debug"</span><span class="fu">,</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"configurePreset"</span><span class="fu">:</span> <span class="st">"debug"</span></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This gives a reproducible Debug configuration.</p>
+<p>From the command line, you can use:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> code/cpp</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--preset</span> debug</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> <span class="at">--preset</span> debug</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>But in VS Code, CMake Tools can use the preset directly.</p>
+</section>
+<section id="running-programs-in-vs-code" class="level3">
+<h3 class="anchored" data-anchor-id="running-programs-in-vs-code">10. Running programs in VS Code</h3>
+<p>With the CMake Tools extension installed, VS Code can see your CMake targets.</p>
+<p>Typical workflow:</p>
+<ol type="1">
+<li>open the full <code>systems-programming-languages</code> folder;</li>
+<li>CMake Tools uses <code>code/cpp</code> as the source directory;</li>
+<li>choose the <code>Debug</code> configure preset;</li>
+<li>configure;</li>
+<li>select a target, for example:</li>
+</ol>
+<pre class="text"><code>cpp_learning_stroustrup_ch01_ex_hello</code></pre>
+<ol start="6" type="1">
+<li>build/run/debug it from VS Code.</li>
+</ol>
+<p>You do not have to manually go into:</p>
+<pre class="text"><code>build/cpp-debug/bin/</code></pre>
+<p>although you can run the binary manually if desired.</p>
+</section>
+<section id="simple-chapters-versus-complex-chapters" class="level3">
+<h3 class="anchored" data-anchor-id="simple-chapters-versus-complex-chapters">11. Simple chapters versus complex chapters</h3>
+<p>There are two main modes.</p>
+<section id="simple-standalone-chapter" class="level4">
+<h4 class="anchored" data-anchor-id="simple-standalone-chapter">Simple standalone chapter</h4>
+<p>For beginner-style examples:</p>
+<pre class="text"><code>ch01/
+  CMakeLists.txt
+  ex_hello.cpp
+  ex_variables.cpp
+  demo_scope.cpp</code></pre>
+<p>Use:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Each example is independent.</p>
+</section>
+<section id="complex-chapter-with-implementation-files" class="level4">
+<h4 class="anchored" data-anchor-id="complex-chapter-with-implementation-files">Complex chapter with implementation files</h4>
+<p>For data structures or algorithms:</p>
+<pre class="text"><code>ch05/
+  CMakeLists.txt
+  include/
+    ch05/
+      vector.hpp
+  src/
+    vector.cpp
+  ex_basic_vector.cpp
+  demo_vector_growth.cpp</code></pre>
+<p>Here you probably want a chapter-level library:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    src/vector.cpp</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span>/include</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch05</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">LINK_LIBRARIES</span> cpp_learning_stroustrup_ch05_lib</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For that to work elegantly, the helper function can later be upgraded to accept <code>LINK_LIBRARIES</code>.</p>
+</section>
+</section>
+<section id="improved-future-proof-helper-function" class="level3">
+<h3 class="anchored" data-anchor-id="improved-future-proof-helper-function">12. Improved future-proof helper function</h3>
+<p>The first helper function is enough for simple examples.</p>
+<p>A more advanced version allows chapter examples to automatically link against libraries:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span>(add_cpp_study_examples target_prefix)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span>(options)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span>(one_value_args)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span>(multi_value_args <span class="dv">LINK_LIBRARIES</span> INCLUDE_DIRS SOURCES)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">cmake_parse_arguments</span>(ARG</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${options}</span><span class="st">"</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${one_value_args}</span><span class="st">"</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${multi_value_args}</span><span class="st">"</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${ARGN}</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">file</span>(<span class="ot">GLOB</span> example_sources <span class="ot">CONFIGURE_DEPENDS</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span><span class="st">/ex_*.cpp"</span></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span><span class="st">/demo_*.cpp"</span></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">foreach</span>(source_file <span class="ot">IN</span> <span class="ot">LISTS</span> example_sources)</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>        <span class="kw">get_filename_component</span>(source_name <span class="st">"</span><span class="dv">${source_file}</span><span class="st">"</span> <span class="ot">NAME_WE</span>)</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">set</span>(target_name <span class="st">"</span><span class="dv">${target_prefix}</span><span class="st">_</span><span class="dv">${source_name}</span><span class="st">"</span>)</span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>        <span class="kw">add_executable</span>(<span class="dv">${target_name}</span></span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>            <span class="st">"</span><span class="dv">${source_file}</span><span class="st">"</span></span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>            <span class="dv">${ARG_SOURCES}</span></span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>        <span class="kw">target_compile_features</span>(<span class="dv">${target_name}</span> <span class="bn">PRIVATE</span> <span class="ot">cxx_std_20</span>)</span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="dv">ARG_INCLUDE_DIRS</span>)</span>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_include_directories</span>(<span class="dv">${target_name}</span></span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">${ARG_INCLUDE_DIRS}</span></span>
+<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">endif</span>()</span>
+<span id="cb41-36"><a href="#cb41-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-37"><a href="#cb41-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="dv">ARG_LINK_LIBRARIES</span>)</span>
+<span id="cb41-38"><a href="#cb41-38" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_link_libraries</span>(<span class="dv">${target_name}</span></span>
+<span id="cb41-39"><a href="#cb41-39" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb41-40"><a href="#cb41-40" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">${ARG_LINK_LIBRARIES}</span></span>
+<span id="cb41-41"><a href="#cb41-41" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb41-42"><a href="#cb41-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">endif</span>()</span>
+<span id="cb41-43"><a href="#cb41-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-44"><a href="#cb41-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="dv">CMAKE_CXX_COMPILER_ID</span> <span class="ot">MATCHES</span> <span class="st">"GNU|Clang"</span>)</span>
+<span id="cb41-45"><a href="#cb41-45" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_compile_options</span>(<span class="dv">${target_name}</span></span>
+<span id="cb41-46"><a href="#cb41-46" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb41-47"><a href="#cb41-47" aria-hidden="true" tabindex="-1"></a>                    -Wall</span>
+<span id="cb41-48"><a href="#cb41-48" aria-hidden="true" tabindex="-1"></a>                    -Wextra</span>
+<span id="cb41-49"><a href="#cb41-49" aria-hidden="true" tabindex="-1"></a>                    -Wpedantic</span>
+<span id="cb41-50"><a href="#cb41-50" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb41-51"><a href="#cb41-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elseif</span>(<span class="dv">MSVC</span>)</span>
+<span id="cb41-52"><a href="#cb41-52" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_compile_options</span>(<span class="dv">${target_name}</span></span>
+<span id="cb41-53"><a href="#cb41-53" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb41-54"><a href="#cb41-54" aria-hidden="true" tabindex="-1"></a>                    /W4</span>
+<span id="cb41-55"><a href="#cb41-55" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb41-56"><a href="#cb41-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">endif</span>()</span>
+<span id="cb41-57"><a href="#cb41-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">endforeach</span>()</span>
+<span id="cb41-58"><a href="#cb41-58" aria-hidden="true" tabindex="-1"></a><span class="kw">endfunction</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then a complex chapter can simply say:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    src/vector.cpp</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span>/include</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch05</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">LINK_LIBRARIES</span> cpp_learning_stroustrup_ch05_lib</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This means all <code>ex_*.cpp</code> and <code>demo_*.cpp</code> files in that chapter automatically link to the chapter library.</p>
+</section>
+<section id="header-only-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="header-only-libraries">13. Header-only libraries</h3>
+<p>Some libraries may be header-only, especially template-heavy C++ code.</p>
+<p>A header-only chapter library looks like:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cpp_learning_stroustrup_ch08_lib</span> <span class="ot">INTERFACE</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">cpp_learning_stroustrup_ch08_lib</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="ot">INTERFACE</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span>/include</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="kw">target_compile_features</span>(<span class="bn">cpp_learning_stroustrup_ch08_lib</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="ot">INTERFACE</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>        <span class="ot">cxx_std_20</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch08</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>    <span class="dv">LINK_LIBRARIES</span> cpp_learning_stroustrup_ch08_lib</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The rule is:</p>
+<pre class="text"><code>Has .cpp implementation files?
+  Use normal add_library(... src/file.cpp)
+
+Header-only?
+  Use add_library(... INTERFACE)</code></pre>
+<p>For compiled libraries:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">my_lib</span> <span class="ot">PUBLIC</span> ...)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="bn">my_lib</span> <span class="ot">PUBLIC</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For header-only libraries:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">my_lib</span> <span class="ot">INTERFACE</span> ...)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="bn">my_lib</span> <span class="ot">INTERFACE</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="root-level-book-level-and-chapter-level-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="root-level-book-level-and-chapter-level-libraries">14. Root-level, book-level, and chapter-level libraries</h3>
+<p>The build system can support reusable libraries at several levels.</p>
+<section id="root-level-common-library" class="level4">
+<h4 class="anchored" data-anchor-id="root-level-common-library">Root-level common library</h4>
+<p>Useful across all C++ books:</p>
+<pre class="text"><code>code/cpp/common/
+  include/
+    cppstudy/
+      timer.hpp
+      print.hpp
+  src/
+    timer.cpp</code></pre>
+<p>Root <code>CMakeLists.txt</code>:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cppstudy_common</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    common/src/timer.cpp</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">cppstudy_common</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span>/common/include</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="kw">target_compile_features</span>(<span class="bn">cppstudy_common</span> <span class="ot">PUBLIC</span> <span class="ot">cxx_std_20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can add more source files:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cppstudy_common</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    common/src/timer.cpp</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    common/src/print.cpp</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    common/src/random.cpp</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Headers may also be listed for IDE visibility, though they are not compiled directly:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cppstudy_common</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    common/src/timer.cpp</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    common/src/print.cpp</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    common/include/cppstudy/timer.hpp</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    common/include/cppstudy/print.hpp</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="book-level-library" class="level4">
+<h4 class="anchored" data-anchor-id="book-level-library">Book-level library</h4>
+<p>Specific to one book:</p>
+<pre class="text"><code>learning-cpp/stroustrup/
+  include/
+    stroustrup/
+      helpers.hpp
+  src/
+    helpers.cpp</code></pre>
+<p>Book <code>CMakeLists.txt</code>:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cpp_learning_stroustrup_lib</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    src/helpers.cpp</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">cpp_learning_stroustrup_lib</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span>/include</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="bn">cpp_learning_stroustrup_lib</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>        cppstudy_common</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="kw">target_compile_features</span>(<span class="bn">cpp_learning_stroustrup_lib</span> <span class="ot">PUBLIC</span> <span class="ot">cxx_std_20</span>)</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="kw">add_subdirectory</span>(ch01)</span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="kw">add_subdirectory</span>(ch02)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="chapter-level-library" class="level4">
+<h4 class="anchored" data-anchor-id="chapter-level-library">Chapter-level library</h4>
+<p>Specific to a chapter:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    src/vector.cpp</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span>/include</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>        cpp_learning_stroustrup_lib</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch05</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>    <span class="dv">LINK_LIBRARIES</span> cpp_learning_stroustrup_ch05_lib</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This gives the dependency chain:</p>
+<pre class="text"><code>cppstudy_common
+    ↓
+cpp_learning_stroustrup_lib
+    ↓
+cpp_learning_stroustrup_ch05_lib
+    ↓
+ex_*.cpp / demo_*.cpp executables</code></pre>
+</section>
+</section>
+<section id="meaning-of-public-private-and-interface" class="level3">
+<h3 class="anchored" data-anchor-id="meaning-of-public-private-and-interface">15. Meaning of <code>PUBLIC</code>, <code>PRIVATE</code>, and <code>INTERFACE</code></h3>
+<p>A rough mental model:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PRIVATE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>means:</p>
+<blockquote class="blockquote">
+<p>This target needs it internally, but users of this target do not inherit it.</p>
+</blockquote>
+<div class="sourceCode" id="cb56"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PUBLIC</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>means:</p>
+<blockquote class="blockquote">
+<p>This target needs it, and users of this target also inherit it.</p>
+</blockquote>
+<div class="sourceCode" id="cb57"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">INTERFACE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>means:</p>
+<blockquote class="blockquote">
+<p>This target does not use it for its own compilation, but anything linking to it inherits it.</p>
+</blockquote>
+<p>For normal compiled libraries, you often use:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">my_lib</span> <span class="ot">PUBLIC</span> ...)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="bn">my_lib</span> <span class="ot">PUBLIC</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For executables, you often use:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="bn">my_executable</span> <span class="ot">PRIVATE</span> my_lib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For header-only libraries, you use:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">my_header_lib</span> <span class="ot">INTERFACE</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">my_header_lib</span> <span class="ot">INTERFACE</span> ...)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="bn">my_header_lib</span> <span class="ot">INTERFACE</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="multiple-libraries-at-the-same-level" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-libraries-at-the-same-level">16. Multiple libraries at the same level</h3>
+<p>You can have multiple libraries at the same level.</p>
+<p>For example, root-level:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cppstudy_headers</span> <span class="ot">INTERFACE</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">cppstudy_headers</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="ot">INTERFACE</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span>/common/include</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="kw">target_compile_features</span>(<span class="bn">cppstudy_headers</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>    <span class="ot">INTERFACE</span> <span class="ot">cxx_std_20</span></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cppstudy_utils</span></span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a>    common/src/timer.cpp</span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">cppstudy_utils</span></span>
+<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span>/common/include</span>
+<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-22"><a href="#cb61-22" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="bn">cppstudy_utils</span></span>
+<span id="cb61-23"><a href="#cb61-23" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb61-24"><a href="#cb61-24" aria-hidden="true" tabindex="-1"></a>        cppstudy_headers</span>
+<span id="cb61-25"><a href="#cb61-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb61-26"><a href="#cb61-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-27"><a href="#cb61-27" aria-hidden="true" tabindex="-1"></a><span class="kw">target_compile_features</span>(<span class="bn">cppstudy_utils</span></span>
+<span id="cb61-28"><a href="#cb61-28" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span> <span class="ot">cxx_std_20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is useful if:</p>
+<ul>
+<li>one part is header-only;</li>
+<li>another part has <code>.cpp</code> files;</li>
+<li>different parts have different dependencies;</li>
+<li>you want to avoid linking everything everywhere.</li>
+</ul>
+<p>But the recommendation is not to over-split too early.</p>
+<p>Start with:</p>
+<pre class="text"><code>cppstudy_common
+cpp_learning_stroustrup_lib
+chapter_lib when needed</code></pre>
+<p>Only introduce multiple libraries at one level when there is a concrete reason.</p>
+</section>
+<section id="practical-naming-convention" class="level3">
+<h3 class="anchored" data-anchor-id="practical-naming-convention">17. Practical naming convention</h3>
+<p>Use globally unique target names.</p>
+<p>For example:</p>
+<pre class="text"><code>cpp_learning_stroustrup_ch01_ex_hello
+cpp_learning_stroustrup_ch05_lib
+cpp_ads_goodrich_ch03_demo_stack
+cpp_ads_goodrich_ch03_lib
+cppstudy_common</code></pre>
+<p>This avoids CMake target name collisions.</p>
+<p>CMake target names are global inside one CMake project, so two targets cannot have the same name.</p>
+</section>
+<section id="recommended-development-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="recommended-development-workflow">18. Recommended development workflow</h3>
+<p>For a simple new chapter:</p>
+<ol type="1">
+<li>create the chapter folder:</li>
+</ol>
+<pre class="text"><code>code/cpp/learning-cpp/stroustrup/ch02/</code></pre>
+<ol start="2" type="1">
+<li>create:</li>
+</ol>
+<pre class="text"><code>ch02/CMakeLists.txt</code></pre>
+<p>with:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch02)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>add the chapter in the book-level <code>CMakeLists.txt</code>:</li>
+</ol>
+<div class="sourceCode" id="cb67"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_subdirectory</span>(ch02)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>create examples:</li>
+</ol>
+<pre class="text"><code>ex_variables.cpp
+demo_input.cpp</code></pre>
+<ol start="5" type="1">
+<li>configure/build in VS Code.</li>
+</ol>
+<p>For a complex chapter:</p>
+<ol type="1">
+<li>create:</li>
+</ol>
+<pre class="text"><code>include/
+src/
+ex_*.cpp
+demo_*.cpp</code></pre>
+<ol start="2" type="1">
+<li>define a chapter library;</li>
+<li>link all examples to it using the improved helper function.</li>
+</ol>
+</section>
+<section id="what-this-setup-gives-you" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-setup-gives-you">19. What this setup gives you</h3>
+<p>This setup gives you:</p>
+<ul>
+<li>one unified repository for notes and code;</li>
+<li>Quarto project remains at the top level;</li>
+<li>C++ build system is cleanly rooted at <code>code/cpp</code>;</li>
+<li>build files go into <code>/build/cpp-debug</code>;</li>
+<li>every <code>ex_*.cpp</code> and <code>demo_*.cpp</code> becomes a runnable target automatically;</li>
+<li>support <code>.cpp</code> files are not accidentally turned into executables;</li>
+<li>simple chapters remain simple;</li>
+<li>complex chapters can grow into proper library-plus-demo structures;</li>
+<li>root-level, book-level, and chapter-level libraries are all supported;</li>
+<li>header-only libraries are supported;</li>
+<li>VS Code can run/debug individual examples without manual terminal navigation.</li>
+</ul>
+<p>The main design principle is:</p>
+<pre class="text"><code>Keep the default case extremely simple,
+but make the structure capable of scaling when a book becomes more serious.</code></pre>
+<p>That is why the setup starts with tiny chapter CMake files but still supports common libraries, book libraries, chapter libraries, and automatic target generation.</p>
+</section>
+</section>
+<section id="extending-with-tests" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="extending-with-tests"><span class="header-section-number">1.2</span> Extending with Tests</h2>
+<p>Yes — the common way is not merely “compile files named <code>test_*.cpp</code>”. The common CMake way is:</p>
+<pre class="text"><code>1. build each test file as an executable
+2. register that executable as a CTest test using add_test(...)
+3. run tests through CTest, VS Code Test Explorer, or CMake Tools test commands</code></pre>
+<p>CMake’s testing support is based on <code>enable_testing()</code> / <code>include(CTest)</code> plus <code>add_test(...)</code>. CTest then discovers and runs the registered tests from the build tree. (<a href="https://cmake.org/cmake/help/latest/command/enable_testing.html?utm_source=chatgpt.com" title="enable_testing — CMake 4.3.2 Documentation">cmake.org</a>)</p>
+<section id="examples-versus-tests" class="level3">
+<h3 class="anchored" data-anchor-id="examples-versus-tests">Examples versus tests</h3>
+<p>In our setup so far:</p>
+<pre class="text"><code>ex_*.cpp
+demo_*.cpp</code></pre>
+<p>means:</p>
+<pre class="text"><code>build runnable programs
+but do not treat them as formal tests</code></pre>
+<p>For tests, we could use:</p>
+<pre class="text"><code>test_*.cpp</code></pre>
+<p>to mean:</p>
+<pre class="text"><code>build runnable test programs
+and register them with CTest</code></pre>
+<p>So a chapter might later look like:</p>
+<pre class="text"><code>ch05/
+  CMakeLists.txt
+
+  include/
+    ch05/
+      vector.hpp
+
+  src/
+    vector.cpp
+
+  ex_basic_vector.cpp
+  demo_vector_growth.cpp
+
+  test_vector_push_back.cpp
+  test_vector_size.cpp</code></pre>
+<p>The examples are run manually when you want to explore. The tests are run as part of a test suite.</p>
+</section>
+<section id="root-level-setup" class="level3">
+<h3 class="anchored" data-anchor-id="root-level-setup">Root-level setup</h3>
+<p>At the top of your C++ CMake project:</p>
+<pre class="text"><code>code/cpp/CMakeLists.txt</code></pre>
+<p>I would add:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span>(<span class="im">CTest</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>near the top, after <code>project(...)</code>.</p>
+<p>For example:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">cmake_minimum_required</span>(<span class="ot">VERSION</span> <span class="dt">3.25</span>)</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="kw">project</span>(cpp_studies <span class="ot">LANGUAGES</span> <span class="ot">CXX</span>)</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span>(<span class="im">CTest</span>)</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(<span class="dv">CMAKE_CXX_STANDARD</span> 20)</span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(<span class="dv">CMAKE_CXX_STANDARD_REQUIRED</span> <span class="ot">ON</span>)</span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(<span class="dv">CMAKE_CXX_EXTENSIONS</span> <span class="ot">OFF</span>)</span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(<span class="dv">CMAKE_RUNTIME_OUTPUT_DIRECTORY</span> <span class="dv">${CMAKE_BINARY_DIR}</span>/bin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>include(CTest)</code> automatically enables testing unless <code>BUILD_TESTING</code> is turned off. CMake’s own documentation says <code>include(CTest)</code> is the usual way to add testing support, and the module creates the <code>BUILD_TESTING</code> option. (<a href="https://cmake.org/cmake/help/book/mastering-cmake/chapter/Testing%20With%20CMake%20and%20CTest.html?utm_source=chatgpt.com" title="Testing With CMake and CTest">cmake.org</a>)</p>
+<p>So you can later configure with tests on or off.</p>
+</section>
+<section id="add-a-test-helper-function" class="level3">
+<h3 class="anchored" data-anchor-id="add-a-test-helper-function">Add a test helper function</h3>
+<p>Keep your existing <code>add_cpp_study_examples(...)</code> for examples/demos.</p>
+<p>Then add a separate helper for tests:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span>(add_cpp_study_tests target_prefix)</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span>(options)</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span>(one_value_args)</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span>(multi_value_args <span class="dv">LINK_LIBRARIES</span> INCLUDE_DIRS SOURCES)</span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">cmake_parse_arguments</span>(ARG</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${options}</span><span class="st">"</span></span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${one_value_args}</span><span class="st">"</span></span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${multi_value_args}</span><span class="st">"</span></span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${ARGN}</span></span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">file</span>(<span class="ot">GLOB</span> test_sources <span class="ot">CONFIGURE_DEPENDS</span></span>
+<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span><span class="st">/test_*.cpp"</span></span>
+<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">foreach</span>(source_file <span class="ot">IN</span> <span class="ot">LISTS</span> test_sources)</span>
+<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">get_filename_component</span>(source_name <span class="st">"</span><span class="dv">${source_file}</span><span class="st">"</span> <span class="ot">NAME_WE</span>)</span>
+<span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-20"><a href="#cb80-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">set</span>(target_name <span class="st">"</span><span class="dv">${target_prefix}</span><span class="st">_</span><span class="dv">${source_name}</span><span class="st">"</span>)</span>
+<span id="cb80-21"><a href="#cb80-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-22"><a href="#cb80-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">add_executable</span>(<span class="dv">${target_name}</span></span>
+<span id="cb80-23"><a href="#cb80-23" aria-hidden="true" tabindex="-1"></a>            <span class="st">"</span><span class="dv">${source_file}</span><span class="st">"</span></span>
+<span id="cb80-24"><a href="#cb80-24" aria-hidden="true" tabindex="-1"></a>            <span class="dv">${ARG_SOURCES}</span></span>
+<span id="cb80-25"><a href="#cb80-25" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb80-26"><a href="#cb80-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-27"><a href="#cb80-27" aria-hidden="true" tabindex="-1"></a>        <span class="kw">target_compile_features</span>(<span class="dv">${target_name}</span> <span class="bn">PRIVATE</span> <span class="ot">cxx_std_20</span>)</span>
+<span id="cb80-28"><a href="#cb80-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-29"><a href="#cb80-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="dv">ARG_INCLUDE_DIRS</span>)</span>
+<span id="cb80-30"><a href="#cb80-30" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_include_directories</span>(<span class="dv">${target_name}</span></span>
+<span id="cb80-31"><a href="#cb80-31" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb80-32"><a href="#cb80-32" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">${ARG_INCLUDE_DIRS}</span></span>
+<span id="cb80-33"><a href="#cb80-33" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb80-34"><a href="#cb80-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">endif</span>()</span>
+<span id="cb80-35"><a href="#cb80-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-36"><a href="#cb80-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="dv">ARG_LINK_LIBRARIES</span>)</span>
+<span id="cb80-37"><a href="#cb80-37" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_link_libraries</span>(<span class="dv">${target_name}</span></span>
+<span id="cb80-38"><a href="#cb80-38" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb80-39"><a href="#cb80-39" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">${ARG_LINK_LIBRARIES}</span></span>
+<span id="cb80-40"><a href="#cb80-40" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb80-41"><a href="#cb80-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">endif</span>()</span>
+<span id="cb80-42"><a href="#cb80-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-43"><a href="#cb80-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="dv">CMAKE_CXX_COMPILER_ID</span> <span class="ot">MATCHES</span> <span class="st">"GNU|Clang"</span>)</span>
+<span id="cb80-44"><a href="#cb80-44" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_compile_options</span>(<span class="dv">${target_name}</span></span>
+<span id="cb80-45"><a href="#cb80-45" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb80-46"><a href="#cb80-46" aria-hidden="true" tabindex="-1"></a>                    -Wall</span>
+<span id="cb80-47"><a href="#cb80-47" aria-hidden="true" tabindex="-1"></a>                    -Wextra</span>
+<span id="cb80-48"><a href="#cb80-48" aria-hidden="true" tabindex="-1"></a>                    -Wpedantic</span>
+<span id="cb80-49"><a href="#cb80-49" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb80-50"><a href="#cb80-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elseif</span>(<span class="dv">MSVC</span>)</span>
+<span id="cb80-51"><a href="#cb80-51" aria-hidden="true" tabindex="-1"></a>            <span class="kw">target_compile_options</span>(<span class="dv">${target_name}</span></span>
+<span id="cb80-52"><a href="#cb80-52" aria-hidden="true" tabindex="-1"></a>                <span class="bn">PRIVATE</span></span>
+<span id="cb80-53"><a href="#cb80-53" aria-hidden="true" tabindex="-1"></a>                    /W4</span>
+<span id="cb80-54"><a href="#cb80-54" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb80-55"><a href="#cb80-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">endif</span>()</span>
+<span id="cb80-56"><a href="#cb80-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-57"><a href="#cb80-57" aria-hidden="true" tabindex="-1"></a>        <span class="kw">add_test</span>(</span>
+<span id="cb80-58"><a href="#cb80-58" aria-hidden="true" tabindex="-1"></a>            <span class="ot">NAME</span> <span class="dv">${target_name}</span></span>
+<span id="cb80-59"><a href="#cb80-59" aria-hidden="true" tabindex="-1"></a>            <span class="ot">COMMAND</span> <span class="dv">${target_name}</span></span>
+<span id="cb80-60"><a href="#cb80-60" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb80-61"><a href="#cb80-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">endforeach</span>()</span>
+<span id="cb80-62"><a href="#cb80-62" aria-hidden="true" tabindex="-1"></a><span class="kw">endfunction</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The key new line is:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_test</span>(</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    <span class="ot">NAME</span> <span class="dv">${target_name}</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    <span class="ot">COMMAND</span> <span class="dv">${target_name}</span></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This registers the executable as a CTest test. CMake’s <code>add_test</code> command is the standard way to define tests, and it only works as test infrastructure after testing has been enabled. (<a href="https://cmake.org/cmake/help/latest/command/add_test.html?utm_source=chatgpt.com" title="add_test — CMake 4.3.2 Documentation">cmake.org</a>)</p>
+</section>
+<section id="simple-chapter-with-tests" class="level3">
+<h3 class="anchored" data-anchor-id="simple-chapter-with-tests">Simple chapter with tests</h3>
+<p>Suppose:</p>
+<pre class="text"><code>ch01/
+  CMakeLists.txt
+  ex_hello.cpp
+  test_arithmetic.cpp</code></pre>
+<p>Then:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch01)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_tests</span>(cpp_learning_stroustrup_ch01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>ex_hello.cpp</code> becomes a normal runnable example.</p>
+<p><code>test_arithmetic.cpp</code> becomes:</p>
+<pre class="text"><code>cpp_learning_stroustrup_ch01_test_arithmetic</code></pre>
+<p>and is also registered with CTest.</p>
+</section>
+<section id="complex-chapter-with-a-chapter-library" class="level3">
+<h3 class="anchored" data-anchor-id="complex-chapter-with-a-chapter-library">Complex chapter with a chapter library</h3>
+<p>Suppose:</p>
+<pre class="text"><code>ch05/
+  CMakeLists.txt
+
+  include/
+    ch05/
+      vector.hpp
+
+  src/
+    vector.cpp
+
+  ex_basic_vector.cpp
+  demo_vector_growth.cpp
+  test_vector.cpp</code></pre>
+<p>Then:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>    src/vector.cpp</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">${CMAKE_CURRENT_SOURCE_DIR}</span>/include</span>
+<span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-9"><a href="#cb86-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-10"><a href="#cb86-10" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb86-11"><a href="#cb86-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb86-12"><a href="#cb86-12" aria-hidden="true" tabindex="-1"></a>        cpp_learning_stroustrup_lib</span>
+<span id="cb86-13"><a href="#cb86-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-14"><a href="#cb86-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-15"><a href="#cb86-15" aria-hidden="true" tabindex="-1"></a><span class="kw">target_compile_features</span>(<span class="bn">cpp_learning_stroustrup_ch05_lib</span></span>
+<span id="cb86-16"><a href="#cb86-16" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PUBLIC</span></span>
+<span id="cb86-17"><a href="#cb86-17" aria-hidden="true" tabindex="-1"></a>        <span class="ot">cxx_std_20</span></span>
+<span id="cb86-18"><a href="#cb86-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-19"><a href="#cb86-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-20"><a href="#cb86-20" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch05</span>
+<span id="cb86-21"><a href="#cb86-21" aria-hidden="true" tabindex="-1"></a>    <span class="dv">LINK_LIBRARIES</span> cpp_learning_stroustrup_ch05_lib</span>
+<span id="cb86-22"><a href="#cb86-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-23"><a href="#cb86-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-24"><a href="#cb86-24" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_tests</span>(cpp_learning_stroustrup_ch05</span>
+<span id="cb86-25"><a href="#cb86-25" aria-hidden="true" tabindex="-1"></a>    <span class="dv">LINK_LIBRARIES</span> cpp_learning_stroustrup_ch05_lib</span>
+<span id="cb86-26"><a href="#cb86-26" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now:</p>
+<pre class="text"><code>ex_basic_vector.cpp       → runnable example
+demo_vector_growth.cpp    → runnable demo
+test_vector.cpp           → runnable CTest test
+src/vector.cpp            → library implementation file, not auto-executable</code></pre>
+</section>
+<section id="what-does-a-minimal-test-file-look-like" class="level3">
+<h3 class="anchored" data-anchor-id="what-does-a-minimal-test-file-look-like">What does a minimal test file look like?</h3>
+<p>Without any external testing framework, a simple test can just return <code>0</code> for success and nonzero for failure.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cassert&gt;</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">assert</span><span class="op">(</span>x <span class="op">==</span> <span class="dv">4</span><span class="op">);</span></span>
+<span id="cb88-7"><a href="#cb88-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>CTest treats exit code <code>0</code> as pass and nonzero as fail. The CMake tutorial describes CTest at this basic level as a task launcher that runs commands and reports success/failure from return codes. (<a href="https://cmake.org/cmake/help/latest/guide/tutorial/Testing%20and%20CTest.html?utm_source=chatgpt.com" title="Step 8: Testing and CTest">cmake.org</a>)</p>
+<p>For your own vector:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cassert&gt;</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;ch05/vector.hpp&gt;</span></span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a>    Vector v<span class="op">;</span></span>
+<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-8"><a href="#cb89-8" aria-hidden="true" tabindex="-1"></a>    <span class="ot">assert</span><span class="op">(</span>v<span class="op">.</span>size<span class="op">()</span> <span class="op">==</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb89-9"><a href="#cb89-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-10"><a href="#cb89-10" aria-hidden="true" tabindex="-1"></a>    v<span class="op">.</span>push_back<span class="op">(</span><span class="dv">42</span><span class="op">);</span></span>
+<span id="cb89-11"><a href="#cb89-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-12"><a href="#cb89-12" aria-hidden="true" tabindex="-1"></a>    <span class="ot">assert</span><span class="op">(</span>v<span class="op">.</span>size<span class="op">()</span> <span class="op">==</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb89-13"><a href="#cb89-13" aria-hidden="true" tabindex="-1"></a>    <span class="ot">assert</span><span class="op">(</span>v<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">==</span> <span class="dv">42</span><span class="op">);</span></span>
+<span id="cb89-14"><a href="#cb89-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is enough for early study code.</p>
+</section>
+<section id="running-tests-manually" class="level3">
+<h3 class="anchored" data-anchor-id="running-tests-manually">Running tests manually</h3>
+<p>From <code>code/cpp</code>:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--preset</span> debug</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> <span class="at">--preset</span> debug</span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ctest</span> <span class="at">--test-dir</span> ../../build/cpp-debug <span class="at">--output-on-failure</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or from the build directory:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../../build/cpp-debug</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ctest</span> <span class="at">--output-on-failure</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>ctest</code> is the CMake test driver program for build trees that use <code>enable_testing()</code> and <code>add_test()</code>. (<a href="https://cmake.org/cmake/help/latest/manual/ctest.1.html?utm_source=chatgpt.com" title="ctest(1) — CMake 4.3.2 Documentation">cmake.org</a>)</p>
+</section>
+<section id="test-presets" class="level3">
+<h3 class="anchored" data-anchor-id="test-presets">Test presets</h3>
+<p>Yes, <code>CMakePresets.json</code> can contain <code>testPresets</code>. CMake’s preset system supports configure, build, and test presets, and CMake Tools also exposes commands like “Select Test Preset” and “Run Tests.” (<a href="https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html?utm_source=chatgpt.com" title="cmake-presets(7) — CMake 4.3.2 Documentation">cmake.org</a>)</p>
+<p>You can extend your <code>CMakePresets.json</code> like this:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"version"</span><span class="fu">:</span> <span class="dv">6</span><span class="fu">,</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"cmakeMinimumRequired"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"major"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"minor"</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">,</span></span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"patch"</span><span class="fu">:</span> <span class="dv">0</span></span>
+<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb92-8"><a href="#cb92-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"configurePresets"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb92-9"><a href="#cb92-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb92-10"><a href="#cb92-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"debug"</span><span class="fu">,</span></span>
+<span id="cb92-11"><a href="#cb92-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"displayName"</span><span class="fu">:</span> <span class="st">"Debug"</span><span class="fu">,</span></span>
+<span id="cb92-12"><a href="#cb92-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"generator"</span><span class="fu">:</span> <span class="st">"Ninja"</span><span class="fu">,</span></span>
+<span id="cb92-13"><a href="#cb92-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"binaryDir"</span><span class="fu">:</span> <span class="st">"${sourceDir}/../../build/cpp-debug"</span><span class="fu">,</span></span>
+<span id="cb92-14"><a href="#cb92-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"cacheVariables"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb92-15"><a href="#cb92-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"CMAKE_BUILD_TYPE"</span><span class="fu">:</span> <span class="st">"Debug"</span><span class="fu">,</span></span>
+<span id="cb92-16"><a href="#cb92-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"CMAKE_EXPORT_COMPILE_COMMANDS"</span><span class="fu">:</span> <span class="st">"ON"</span><span class="fu">,</span></span>
+<span id="cb92-17"><a href="#cb92-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"BUILD_TESTING"</span><span class="fu">:</span> <span class="st">"ON"</span></span>
+<span id="cb92-18"><a href="#cb92-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb92-19"><a href="#cb92-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb92-20"><a href="#cb92-20" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb92-21"><a href="#cb92-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"buildPresets"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb92-22"><a href="#cb92-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb92-23"><a href="#cb92-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"debug"</span><span class="fu">,</span></span>
+<span id="cb92-24"><a href="#cb92-24" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"displayName"</span><span class="fu">:</span> <span class="st">"Debug"</span><span class="fu">,</span></span>
+<span id="cb92-25"><a href="#cb92-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"configurePreset"</span><span class="fu">:</span> <span class="st">"debug"</span></span>
+<span id="cb92-26"><a href="#cb92-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb92-27"><a href="#cb92-27" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb92-28"><a href="#cb92-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"testPresets"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb92-29"><a href="#cb92-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb92-30"><a href="#cb92-30" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"debug"</span><span class="fu">,</span></span>
+<span id="cb92-31"><a href="#cb92-31" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"displayName"</span><span class="fu">:</span> <span class="st">"Debug tests"</span><span class="fu">,</span></span>
+<span id="cb92-32"><a href="#cb92-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"configurePreset"</span><span class="fu">:</span> <span class="st">"debug"</span><span class="fu">,</span></span>
+<span id="cb92-33"><a href="#cb92-33" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"output"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb92-34"><a href="#cb92-34" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"outputOnFailure"</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb92-35"><a href="#cb92-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb92-36"><a href="#cb92-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb92-37"><a href="#cb92-37" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb92-38"><a href="#cb92-38" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then from <code>code/cpp</code>:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--preset</span> debug</span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> <span class="at">--preset</span> debug</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ctest</span> <span class="at">--preset</span> debug</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="vs-code-integration" class="level3">
+<h3 class="anchored" data-anchor-id="vs-code-integration">VS Code integration</h3>
+<p>In VS Code, once CMake has configured the project, tests registered through CTest can be run through CMake Tools. The CMake Tools documentation includes commands such as:</p>
+<pre class="text"><code>CMake: Select Test Preset
+CMake: Run Tests</code></pre>
+<p>and supports CMake presets. (<a href="https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/README.md?utm_source=chatgpt.com" title="vscode-cmake-tools/docs/README.md at main">GitHub</a>)</p>
+<p>So the workflow becomes:</p>
+<pre class="text"><code>write test_*.cpp
+→ configure/build
+→ CMake/CTest discovers tests
+→ run tests from VS Code or with ctest</code></pre>
+</section>
+<section id="should-test_.cpp-be-auto-globbed" class="level3">
+<h3 class="anchored" data-anchor-id="should-test_.cpp-be-auto-globbed">Should <code>test_*.cpp</code> be auto-globbed?</h3>
+<p>For your study project, yes, I think this convention is reasonable:</p>
+<pre class="text"><code>ex_*.cpp      manually runnable examples
+demo_*.cpp    manually runnable demos
+test_*.cpp    CTest-registered tests</code></pre>
+<p>This is consistent with the style we already designed.</p>
+<p>The important distinction is that <code>test_*.cpp</code> should not merely be built. It should also be registered with:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_test</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That is what makes it a real CMake/CTest test.</p>
+</section>
+<section id="recommended-setup" class="level3">
+<h3 class="anchored" data-anchor-id="recommended-setup">Recommended setup</h3>
+<p>I would keep two separate helper functions:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(...)</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_tests</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>rather than one giant function.</p>
+<p>That keeps the meaning clean:</p>
+<pre class="text"><code>examples/demos → exploratory runnable programs
+tests          → correctness checks registered with CTest</code></pre>
+<p>And in a chapter:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode cmake code-with-copy"><code class="sourceCode cmake"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_examples</span>(cpp_learning_stroustrup_ch05</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">LINK_LIBRARIES</span> cpp_learning_stroustrup_ch05_lib</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_cpp_study_tests</span>(cpp_learning_stroustrup_ch05</span>
+<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">LINK_LIBRARIES</span> cpp_learning_stroustrup_ch05_lib</span>
+<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That is the natural extension of our current setup.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./resources.html" class="pagination-link" aria-label="Resources &amp; Reading List">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Resources &amp; Reading List</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
