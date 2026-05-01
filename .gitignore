@@ -1,2 +1,6 @@
 /_book/
 /.quarto/
+# VS Code: ignore personal/local files
+.vscode/*
+!.vscode/settings.json
+/build/

@@ -1,0 +1,35 @@
+---
+title: Resources & Reading List
+---
+
+## C++ 
+
+### Programming Intro with C++
+
+* Programming Principles and Practice Using C++. Stroustrup
+* Programming Abstractions in C++. Eric S. Roberts
+* Data Structures and Problem Solving Using C++. Mark Allen Weiss
+* Data Structures and Other Objects Using C++. Savitch
+
+### Learning C++ as a Language
+
+* C++ Crash Course. Josh Lospinoso
+* Tour of C++. Stroustrup
+* C++ Primer. Lippman
+
+### Further C++ 
+
+* C++ STL. Josuttis
+* Discovering Modern C++. Gottschling
+* Move Semantics. Josuttis
+* C++ Templates. Josuttis
+* Effective Modern C++. Scott Meyers
+* Objekt-orientertes Programmieren in C++. Josuttis
+* Functional Programming with C++. Cukic
+* Modern C++ Programming with Test-Driven Development. Jeff Langr
+* The C++ Programming Language. Stroustrup
+
+### Data Structure & Aglorithms with C++
+
+* Data Structures and Algorithm Analysis with C++. Mark Allen Weiss
+* Data Structures and Algorithms C++. Goodrich

@@ -1,0 +1,1 @@
+add_cpp_study_examples(cpp_learning_stroustrup_ch01)

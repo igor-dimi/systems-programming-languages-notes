@@ -7,7 +7,10 @@ book:
   date: "5/17/2024"
   chapters:
     - index.qmd
+    - part: "C++"
+    - resources.qmd
   page-navigation: true
+  downloads: pdf
 
 # bibliography: references.bib
 
@@ -18,4 +21,4 @@ format:
     documentclass: scrreprt
 
 
-
+number-depth: 2
